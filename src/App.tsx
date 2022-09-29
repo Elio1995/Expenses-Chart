@@ -1,24 +1,20 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import logo from "../images/logo.svg";
+import BarChart from "./Components/BarChart.js";
 import "./App.css";
 
+export interface EXPENSE {
+  id: Number;
+  day: string;
+  amount: Number;
+}
+export interface DATA {
+  labels: string[];
+  datasets: [{ label: string; data: Number[] }];
+}
+
 function App() {
-  const [expenses, setExpenses] = useState([]);
-
-  function getExpenseList() {
-    return fetch(`http://localhost:3000/expenses`)
-      .then((response) => response.json())
-      .then((data) => {
-        setExpenses(data);
-      });
-  }
-
-  useEffect(() => {
-    getExpenseList();
-  }, []);
-  console.log(expenses);
-
   return (
     <div className="App">
       <div
@@ -54,14 +50,7 @@ function App() {
         }}
       >
         <p>Spending - Last 7 days</p>
-        {expenses.map((expense) => {
-          return (
-            <>
-              <p>{expense.amount}</p>
-              <p>{expense.day}</p>
-            </>
-          );
-        })}
+        <BarChart />
       </div>
     </div>
   );
