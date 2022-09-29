@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-// import { Bar } from "react-chartjs-2";
-import { DATA, EXPENSE } from "../App";
-import "../App.css";
+import { EXPENSE } from "../App";
 import { Expenses } from "../../data";
-// import { Chart as ChartJS } from "chart.js/auto";
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
 ChartJS.register(...registerables);
+import "../App.css";
 
 const state = {
   labels: Expenses?.map((data: EXPENSE) => data.day),

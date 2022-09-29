@@ -1,7 +1,6 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import logo from "../images/logo.svg";
 import BarChart from "./Components/BarChart.js";
+import { Expenses } from "../data";
 import "./App.css";
 
 export interface EXPENSE {
@@ -13,6 +12,9 @@ export interface DATA {
   labels: string[];
   datasets: [{ label: string; data: Number[] }];
 }
+
+const sum = Expenses.map((expense) => expense.amount).reduce((a, b) => a + b);
+console.log(sum);
 
 function App() {
   return (
